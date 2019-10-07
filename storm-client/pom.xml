@@ -83,6 +83,14 @@
             <artifactId>kryo</artifactId>
         </dependency>
 
+        <!-- IBM DiSNI - RDMA Plugin for Java -->
+        <dependency>
+            <groupId>com.ibm.disni</groupId>
+            <artifactId>disni</artifactId>
+            <version>2.1-modified</version>
+            <type>jar</type>
+        </dependency>
+
         <!-- below are transitive dependencies which are version managed in storm pom -->
         <dependency>
             <groupId>io.dropwizard.metrics</groupId>

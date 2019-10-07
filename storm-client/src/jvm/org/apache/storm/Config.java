@@ -65,7 +65,7 @@ import org.apache.storm.validation.ConfigValidationAnnotations.isType;
  * are free to make use of them by reading them in the prepare method of Bolts or the open method of Spouts.
  */
 public class Config extends HashMap<String, Object> {
-
+    
     /**
      * The serializer class for ListDelegate (tuple payload). The default serializer will be ListDelegateSerializer
      */
@@ -1338,6 +1338,22 @@ public class Config extends HashMap<String, Object> {
      */
     @isInteger
     public static final String STORM_MESSAGING_NETTY_CLIENT_WORKER_THREADS = "storm.messaging.netty.client_worker_threads";
+    
+    /**
+     * DiSNI based messaging: the binding filter list
+     */
+    public static final String STORM_MESSAGING_DISNI_BINDING_FILTER_LIST = "storm.messaging.disni.binding.filter.list";
+    /**
+     * DiSNI based messaging: the binding filter enable switch
+     */
+    public static final String STORM_MESSAGING_DISNI_BINDING_FILTER_ENABLE = "storm.messaging.disni.binding.filter.enable";
+    
+    public static final String STORM_MESSAGING_DISNI_BINDING_FILTER_STRICT = "storm.messaging.disni.binding.filter.strict";
+    
+    public static final String STORM_MESSAGING_DISNI_RECV_CALL_INITIALIZED = "storm.messaging.disni.recv.call.initialized";
+    
+    public static final String STORM_MESSAGING_DISNI_RECV_BUFFER_SIZE = "storm.messaging.disni.recv.buffer.size";
+
     /**
      * Should the supervior try to run the worker as the lauching user or not.  Defaults to false.
      */

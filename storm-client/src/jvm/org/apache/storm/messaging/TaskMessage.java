@@ -37,6 +37,14 @@ public class TaskMessage {
         bb.put(_message);
         return bb;
     }
+    
+    public ByteBuffer serializeDirectWithHeadByte(byte first) {
+        ByteBuffer bb = ByteBuffer.allocateDirect(_message.length + 3);
+        bb.put(first);
+        bb.putShort((short) _task);
+        bb.put(_message);
+        return bb;
+    }
 
     public void deserialize(ByteBuffer packet) {
         if (packet == null) {
@@ -44,6 +52,16 @@ public class TaskMessage {
         }
         _task = packet.getShort();
         _message = new byte[packet.limit() - 2];
+        packet.get(_message);
+    }
+    
+    public void deserializeWithHeadByte(ByteBuffer packet) {
+        if (packet == null) {
+            return;
+        }
+        packet.get(); // discard first byte
+        _task = packet.getShort();
+        _message = new byte[packet.limit() - 3];
         packet.get(_message);
     }
 
